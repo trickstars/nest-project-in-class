@@ -32,13 +32,13 @@ export class RunsController {
     return this.runsService.createRun(distance, time);
   }
 
+  @Patch(':id')
+  updateRun(@Param('id') id: number, @Body() dto: Run) {
+    return this.runsService.updateRun(id, dto);
+  }
+
   @Delete(':id')
   deleteRun(@Param('id') id: number) {
     return this.runsService.deleteRun(id);
-  }
-
-  @Patch(':id')
-  updateRun(@Param('id') id: number, dto: Run) {
-    return this.runsService.updateRun(id, dto);
   }
 }

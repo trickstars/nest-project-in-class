@@ -29,9 +29,10 @@ export class RunsService {
 
     this.runs.push({
       id: nextId,
-      distance,
       time,
+      distance,
     });
+    //console.log(this.runs)
 
     return { newId: nextId };
   }
@@ -55,11 +56,13 @@ export class RunsService {
     if (currentRun === null) {
       throw new NotFoundException('Can not find Run with id:' + id);
     }
+    console.log(payload)
+    console.log(currentRun)
     const updatedRun = {
       ...currentRun,
       ...payload,
     };
-    // this.runRepository.update(updatedRun);
+    this.update(updatedRun);
     return updatedRun;
   }
 
